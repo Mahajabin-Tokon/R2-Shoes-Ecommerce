@@ -4,11 +4,30 @@ import Products from "./Products/Products";
 import Recommended from "./Recommended/Recommended";
 import Sidebar from "./Sidebar/Sidebar";
 
+// Products from Database
+import products from "./db/data";
+
 function App() {
   // Declaring all states in App; Using App component as a kind of store for all the states
   const [selectedCategory, useSelectedCategory] = useState(null);
-  
-  // Input Filter
+
+  // ------ Input Filter -----
+  const [query, setQuery] = useState("");
+
+  const handleInputChange = (event) => {
+    setQuery(event.target.value);
+  };
+
+  const filteredItems = products.filter(
+    (product) =>
+      product.title.toLocaleLowerCase().indexOf(query.toLocaleLowerCase()) !==
+      -1
+  );
+
+  // ------ Radio Filter -----
+
+  console.log(filteredItems);
+
   return (
     <>
       <Sidebar />
