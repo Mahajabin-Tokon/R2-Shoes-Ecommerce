@@ -9,7 +9,7 @@ import products from "./db/data";
 
 function App() {
   // Declaring all states in App; Using App component as a kind of store for all the states
-  const [selectedCategory, useSelectedCategory] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
   // ------ Input Filter -----
   const [query, setQuery] = useState("");
@@ -25,8 +25,9 @@ function App() {
   );
 
   // ------ Radio Filter -----
-
-  console.log(filteredItems);
+  const handleChange = event => {
+    setSelectedCategory(event.target.value)
+  }
 
   return (
     <>
